@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/jquery.tagsinput.css')
+    script(src='/javascripts/jquery.tagsinput.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js')
+    script(src='/javascripts/jquery-ui.custom.min.js')
+    link(rel='stylesheet', href='/stylesheets/jquery-ui.custom.css')
+    
+    link(rel='stylesheet', href='/stylesheets/jquery.handsontable.full.css')
+    script(src='/javascripts/jquery.handsontable.full.js')
+    
+    script(src='/javascripts/common.js')
+    
+    .container(ng-app="app_customed_handsontable", ng-controller="ctr_customed_handsontable", ng-cloak='')
+        
+        .row
+            .col-md-4
+                h4(style='float:left') Exception Status History
+            .col-md-8(style='text-align: right !important;')
+                button#btn_expEdit.btn-f21-basic.btn-2.btn-xs.cudAuthCtr(type='button', ng-click='editException()', style='height: auto; display: none;') Edit
+                button#btn_expAdd.btn-f21-basic.btn-2.btn-xs.cudAuthCtr(type='button', ng-click='add_ExcptnBtn()') add
+                button#btn_expDel.btn-f21-basic.btn-2.btn-xs.cudAuthCtr(type='button', ng-click='del_ExcptnBtn()') del
+                button#btn_loadData.btn-f21-basic.btn-2.btn-xs.cudAuthCtr(type='button', ng-click='load_ExcptnBtn()') load
+        .row
+            .col-md-12
+                #hst_exception(style='overflow: scroll; margin-bottom: 10px')
+        .row
+            .col-md-4
+                h4(style='float:left') original data object
+            .col-md-4
+                h4(style='float:left') change data object
+            .col-md-4
+                h4(style='float:left') grid data object
+        .row
+            .col-md-4
+                textarea(cols='40', rows='50', style='height: 200px;') {{org_data}}
+            .col-md-4
+                textarea(cols='40', rows='50', style='height: 200px;') {{chg_data}}
+            .col-md-4
+                textarea(cols='40', rows='50', style='height: 200px;') {{grid_data}}    
+    
+    script(src='/javascripts/customed_handsontable.js')
